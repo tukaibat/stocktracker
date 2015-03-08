@@ -1,7 +1,7 @@
-angular.module('stockController', [])
+angular.module('stockApp', [])
 
     // inject the Stocks service factory into our controller
-    .controller('mainController', ['$scope','$http','Stocks', function($scope, $http, Stocks) {
+    .controller('stockController', ['$scope','$http','Stocks', function($scope, $http, Stocks) {
         $scope.formData = {};
         $scope.loading = true;
 

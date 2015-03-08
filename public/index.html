@@ -9,8 +9,8 @@
 	<title>Stocks App</title>
 
 	<!-- SCROLLS -->
-	<link rel="stylesheet" href="css/external/bootstrap.min.css">
-	<link rel="stylesheet" href="css/external/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.css">
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css">
 	<!-- Custom styles for this template -->
     	<link href="css/external/navbar-fixed-top.css" rel="stylesheet">
 	<style type="text/css">html{overflow-y:scroll;}body{padding-top:50px;}#stock-list{ margin-bottom:30px;}#stock-form{margin-bottom:50px;}</style>
@@ -23,7 +23,7 @@
 	<script src="js/core.js"></script> <!-- load our main application -->
 </head>
 <!-- SET THE CONTROLLER -->
-<body ng-controller="mainController">
+<body ng-controller="stockController">
 	<div class="container">
 		<!-- Static navbar -->
 		<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
@@ -41,22 +41,22 @@
 		          		</div>
 		          		<div id="navbar" class="navbar-collapse collapse">
 		          			<ul class="nav navbar-nav">
-		          				<li class="active"><a href="#">Stocks List</a></li>
-		          				<li><a href="#">Cash Trades</a></li>
-		          				<li><a href="#">F/O Trades</a></li>
+		          				<li class="active"><a href="/">Stocks List</a></li>
+		          				<li><a href="cashTrades">Cash Trades</a></li>
+		          				<li><a href="#fnoTrades">F/O Trades</a></li>
 		          			</ul>
 		          		</div>
 	          		</div>
 	          	</nav>
 	</div>
-	<div class="container">
+	<div class="container" id="stocksList">
 		<h4 ng-show="stocks.length">Available Stocks</h4>
 		<h4 ng-hide="stocks.length">No Stocks Present. Add Some</h4>
 		<p class="text-center" ng-show="loading">
 		            <span class="fa fa-spinner fa-spin fa-3x"></span>
 		</p>
 		<ul ng-repeat="stock in stocks">
-			<li>{{ stock.name }} <br/>Description: {{ stock.desc }}</li>
+			<li>{{ stock.name }} <br/>Description: {{ stock.desc }}<button class="pull-right btn btn-xs btn-danger" ng-click="deleteStock(stock._id)"><i class="fa fa-trash-o fa-lg"></i></button></li>
 		</ul>
 		<form>
 			<label>Add a Stock</label>
@@ -67,13 +67,13 @@
 			<textarea ng-model="stock.desc" class="form-control" placeholder="Enter A Desctiption"></textarea>
 			</div>
 			<div class="form-group">
-			<button type="submit" class="btn btn-default" ng-click="createStock()">Add</button>
+			<button type="submit" class="btn btn-primary" ng-click="createStock()">Add</button>
 			</div>
 			</div>
 		</form>
 	</div>
-	
-	<script src="js/external/jquery.min.js"></script>
+	<script src="js/external/jquery.js"></script>
 	<script src="js/external/bootstrap.min.js"></script><!-- load bootstrap -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.1/ui-bootstrap-tpls.js"></script>
 </body>
 </html>
